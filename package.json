@@ -1,0 +1,19 @@
+{
+  "name": "@sled/touch",
+  "version": "0.1.0-beta",
+  "description": "swipe unwanted",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sledjs/touch.git"
+  },
+  "author": "Damian Martyniak",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sledjs/touch/issues"
+  },
+  "homepage": "https://github.com/sledjs/touch#readme",
+  "dependencies": {
+    "hammerjs": "^2.0.6"
+  }
+}
