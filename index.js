@@ -1,6 +1,8 @@
-import Hammer from 'hammerjs';
+'use strict';
 
-export default class Touch {
+let Hammer = require('hammerjs');
+
+module.exports = class Touch {
   constructor($core) {
     this.hammer = new Hammer($core.domModules.slides);
     this.slides = $core.modules.slides;
@@ -51,4 +53,4 @@ export default class Touch {
     });
 
   }
-}
+};
