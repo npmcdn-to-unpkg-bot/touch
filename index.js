@@ -1,6 +1,7 @@
 'use strict';
 
 let Hammer = require('hammerjs');
+let setTransform = require('@sled/set-transform');
 
 module.exports = class Touch {
   constructor($core) {
@@ -25,8 +26,8 @@ module.exports = class Touch {
 
     $img.style.transform = `translateX(${delta}px)`;
 
-    $img.previousElementSibling ? $img.previousElementSibling.style.transform = `translateX(${ -$img.offsetWidth + delta }px)` : null;
-    $img.nextElementSibling ? $img.nextElementSibling.style.transform = `translateX(${ +$img.offsetWidth + delta }px)` : null;
+    setTransform($img.previousElementSibling.style, `translateX(${ -$img.offsetWidth + delta }px)`);
+    setTransform($img.nextElementSibling.style, `translateX(${ $img.offsetWidth + delta }px)`);
   }
 
   start() {
