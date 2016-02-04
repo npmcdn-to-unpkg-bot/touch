@@ -17,8 +17,6 @@ module.exports = class Touch {
   swipe(e) {
     setTimeout(_ =>
       this.slides.change(e.direction == 2 ? 1 : -1), 50);
-
-    if (this.autoSlider) this.autoSlider.restart(5000);
   }
 
   pan(e) {
