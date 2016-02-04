@@ -20,6 +20,12 @@ module.exports = class Touch {
       this.slides.change(e.direction == 2 ? 1 : -1), 50);
   }
 
+  nearSlides() {
+    let $slide = this.slides.$slides.children[this.slides.slide];
+
+    return [$slide.previousElementSibling, $slide, $slide.nextElementSibling];
+  }
+
   pan(e) {
     let $img = this.slides.$slides.children[this.slides.slide];
     let delta = e.deltaX;
