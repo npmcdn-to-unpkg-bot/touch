@@ -27,40 +27,40 @@ module.exports = class Touch {
   }
 
   pan(e) {
-    let $img = this.slides.$slides.children[this.slides.slide];
+    let $slides = this.nearSlides();
     let delta = e.deltaX;
 
-    $img.style.transform = `translateX(${delta}px)`;
+    $slides[1].style.transform = `translateX(${delta}px)`;
 
-    setTransform($img.previousElementSibling.style, `translateX(${ -$img.offsetWidth + delta }px)`);
-    setTransform($img.nextElementSibling.style, `translateX(${ $img.offsetWidth + delta }px)`);
+    setTransform($slides[0].style, `translateX(${ -$slides[1].offsetWidth + delta }px)`);
+    setTransform($slides[2].style, `translateX(${ $slides[1].offsetWidth + delta }px)`);
   }
 
   start() {
-    let $img = this.slides.$slides.children[this.slides.slide];
-    let $imgs = [$img.previousElementSibling, $img, $img.nextElementSibling];
+    let $slides = this.nearSlides();
 
-    $imgs.forEach($img =>  $img ? $img.style.transition = '0s' : null);
-    if (this.autoSlider) this.autoSlider.stop();
+    $slides.forEach($slide =>
+      $slide ? $slide.style.transition = '0s' : null);
+
+    if (this.autoSlider)
+      this.autoSlider.stop();
   }
 
   end(e) {
-    let $img = this.slides.$slides.children[this.slides.slide];
-    let $imgs = [$img.previousElementSibling, $img, $img.nextElementSibling];
+    let $slides = this.nearSlides();
 
-    $img.style.transform = `translateX(0px)`;
+    $slides[1].style.transform = `translateX(0px)`;
 
-    $img.previousElementSibling ? $img.previousElementSibling.style.transform = `translateX(-100%)` : null;
-    $img.nextElementSibling ? $img.nextElementSibling.style.transform = `translateX(100%)` : null;
+    setTransform($slides[0].style, `translateX(-100%)`);
+    setTransform($slides[2].style, `translateX(100%)`);
 
-    $imgs.forEach($img => {
-      $img ? $img.style.transition = '1s' : null;
-    });
-    if (this.autoSlider) {
-      this.autoSlider.work = true;
-      this.autoSlider.restart(5000);
-    }
+    $slides.forEach($slide =>
+      $slide ? $slide.style.transition = '1s' : null);
 
-    if (Math.abs(e.deltaX) > ($img.offsetWidth / 2)) this.slides.change(e.deltaX > 0 ? -1 : 1);
+    if (Math.abs(e.deltaX) > ($slides[1].offsetWidth / 2))
+      this.slides.change(e.deltaX > 0 ? -1 : 1);
+
+    if (this.autoSlider)
+      this.autoSlider.start();
   }
 };
