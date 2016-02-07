@@ -1,6 +1,6 @@
 import Touch from './src/Touch';
 
-export default {
+module.exports = {
   class: Touch,
   name: 'touch',
 };

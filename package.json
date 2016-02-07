@@ -3,6 +3,9 @@
   "version": "0.2.0",
   "description": "swipe unwanted",
   "main": "index.js",
+  "scripts": {
+    "start": "webpack"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sledjs/touch.git"
