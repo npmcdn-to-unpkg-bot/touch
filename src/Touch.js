@@ -1,13 +1,5 @@
 'use strict';
 
-import { Observable } from 'rxjs-es/Observable';
-import 'rxjs-es/add/observable/fromEvent';
-import 'rxjs-es/add/operator/pluck';
-import 'rxjs-es/add/operator/merge';
-import 'rxjs-es/add/operator/filter';
-import 'rxjs-es/add/operator/map';
-
-const fromEvent = Observable.fromEvent;
 import setTransform from '@sled/set-transform';
 
 class Touch {
@@ -18,21 +10,18 @@ class Touch {
   init(core) {
     this.slides = core.modules.slides;
 
-    fromEvent(core.$, 'mousedown')
-      .pluck('clientX')
-      .subscribe(::this.start);
+    core.$.addEventListener('mousedown', e => ::this.start(e.clientX));
+    core.$.addEventListener('mouseup', e =>
+      this.startPosition !== null ? ::this.stop(this.delta(e)) : null);
 
-    fromEvent(core.$, 'mouseup')
-      .merge(fromEvent(core.$, 'mouseleave'))
-      .filter(_ => this.startPosition !== null)
-      .map(::this.delta)
-      .subscribe(::this.stop);
+    core.$.addEventListener('mouseleave', e =>
+      this.startPosition !== null ? ::this.stop(this.delta(e)) : null);
 
-    fromEvent(core.$, 'touchmove')
-      .merge(fromEvent(core.$, 'mousemove'))
-      .filter(_ => this.startPosition !== null)
-      .map(::this.delta)
-      .subscribe(::this.move);
+    core.$.addEventListener('touchmove', e =>
+      this.startPosition !== null ? ::this.move(this.delta(e)) : null);
+
+    core.$.addEventListener('mousemove', e =>
+      this.startPosition !== null ? ::this.move(this.delta(e)) : null);
   }
 
   delta(e) {
