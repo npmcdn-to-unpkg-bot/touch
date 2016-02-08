@@ -1,6 +1,6 @@
 {
   "name": "@sled/touch",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "swipe unwanted",
   "main": "index.js",
   "scripts": {
