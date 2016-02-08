@@ -48,12 +48,12 @@ class Touch {
     setTransform($slides[2], `translateX(${ $slides[1].offsetWidth + delta }px)`);
   }
 
-  start(delta) {
+  start(position) {
     this.nearSlides()
       .forEach($slide =>
         $slide ? $slide.style.transition = '0s' : null);
 
-    this.startPosition = delta;
+    this.startPosition = position;
   }
 
   stop(delta) {
