@@ -33,6 +33,7 @@ module.exports = {
         test: /\.js$/,
         include: [
           path.resolve(__dirname, 'node_modules/@sled'),
+          path.resolve(__dirname, 'node_modules/rxjs-es'),
           path.resolve(__dirname, 'index'),
           path.resolve(__dirname, 'src'),
         ],

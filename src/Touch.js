@@ -1,6 +1,12 @@
 'use strict';
 
-import { Observable } from 'rx';
+import { Observable } from 'rxjs-es/Observable';
+import 'rxjs-es/add/observable/fromEvent';
+import 'rxjs-es/add/operator/pluck';
+import 'rxjs-es/add/operator/merge';
+import 'rxjs-es/add/operator/filter';
+import 'rxjs-es/add/operator/map';
+
 const fromEvent = Observable.fromEvent;
 import setTransform from '@sled/set-transform';
 
