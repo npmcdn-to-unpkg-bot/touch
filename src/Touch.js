@@ -18,6 +18,7 @@ class Touch {
 
     fromEvent(core.$, 'mouseup')
       .merge(fromEvent(core.$, 'mouseleave'))
+      .filter(_ => this.startPosition !== null)
       .map(::this.delta)
       .subscribe(::this.stop);
 
