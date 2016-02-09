@@ -63,7 +63,7 @@ class Touch {
       $slide ? $slide.style.transition = null : null);
 
     if (Math.abs(delta) > ($slides[1].offsetWidth / 2))
-      this.slides.move(delta > 0 ? -1 : 1);
+      delta > 0 ? this.slides.prev() : this.slides.next();
 
     this.startPosition = null;
   }
