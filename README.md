@@ -2,7 +2,7 @@
 [Sled](https://github.com/sledjs/sled) module
 
 ## cdn
-[touch.js](https://npmcdn.com/@sled/touch/lib/touch)
+[touch.js](https://unpkg.com/@sled/touch/lib/touch)
 
 ## npm
 ```sh
